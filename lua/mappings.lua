@@ -75,3 +75,21 @@ map("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]ui
 
 -- ─── Insert Mode Navigation ─────────────────────────────────────────────
 map("i", "jk", "<Esc>", { desc = "Exit insert mode" })
+
+-- Markdown Browser Preview
+vim.keymap.set("n", "<leader>mp", function()
+  vim.cmd("MarkdownPreview")
+  vim.notify("Browser preview started", "info", { title = "Markdown" })
+end, { desc = "Start browser preview" })
+
+vim.keymap.set("n", "<leader>ms", function()
+  -- Stop browser preview
+  pcall(vim.cmd, "MarkdownPreviewStop")
+  pcall(vim.cmd, "MKDPStop")
+  -- Close preview buffer if exists
+  local preview_buf = vim.fn.bufnr("markdown-preview")
+  if preview_buf ~= -1 then
+    pcall(vim.cmd, "bd! " .. preview_buf)
+  end
+  vim.notify("Browser preview stopped", "info", { title = "Markdown" })
+end, { desc = "Stop browser preview" })
