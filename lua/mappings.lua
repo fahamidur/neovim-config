@@ -93,3 +93,27 @@ vim.keymap.set("n", "<leader>ms", function()
   end
   vim.notify("Browser preview stopped", "info", { title = "Markdown" })
 end, { desc = "Stop browser preview" })
+
+-- ─── Ergonomic Bracket System ──────────────────────────────────────────
+-- Uses 'b' prefix to avoid stretching your hands to the top number row.
+
+-- 1. Insert Mode (Type 'bp' to get '()', cursor lands inside)
+map("i", "bp", "()<Left>", { desc = "Insert ()" })
+map("i", "bc", "{}<Left>", { desc = "Insert {}" })
+map("i", "bs", "[]<Left>", { desc = "Insert [" })
+
+-- 2. Operator-Pending Mode (Allows cibp, dibc, dabs, etc.)
+map("o", "ibp", "i(")
+map("o", "abp", "a(")
+map("o", "ibc", "i{")
+map("o", "abc", "a{")
+map("o", "ibs", "i[")
+map("o", "abs", "a[")
+
+-- 3. Visual Mode (Allows vibp, vibc, vabs, etc.)
+map("x", "ibp", "i(")
+map("x", "abp", "a(")
+map("x", "ibc", "i{")
+map("x", "abc", "a{")
+map("x", "ibs", "i[")
+map("x", "abs", "a[")
