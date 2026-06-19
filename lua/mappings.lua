@@ -98,9 +98,13 @@ end, { desc = "Stop browser preview" })
 -- Uses 'b' prefix to avoid stretching your hands to the top number row.
 
 -- 1. Insert Mode (Type 'bp' to get '()', cursor lands inside)
+
 map("i", "bp", "()<Left>", { desc = "Insert ()" })
 map("i", "bc", "{}<Left>", { desc = "Insert {}" })
 map("i", "bs", "[]<Left>", { desc = "Insert [" })
+map("i", "jj", "=", { desc = "Insert not equal sign" })
+map("i", "njj", "!=", { desc = "Insert equal sign" })
+map("i", ";;", "%", { desc = "Insert percent sign" })
 
 -- 2. Operator-Pending Mode (Allows cibp, dibc, dabs, etc.)
 map("o", "ibp", "i(")
